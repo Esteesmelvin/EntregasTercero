@@ -3,15 +3,12 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const headers = {
-  cors: {
-    origin: 'http://127.0.0.1:5173',
-    methods: ["GET", "POST"]
-  }
-}
 // Middleware
 app.use(bodyParser.json());
-app.use(cors(headers));
+app.use(cors({
+  origin: 'http://localhost:5173',
+  methods: ["GET", "POST"]
+}));
 
 // Rutas
 const authRoutes = require('./routes/authRoutes');
