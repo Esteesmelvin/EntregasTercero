@@ -3,9 +3,15 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+const headers = {
+  cors: {
+    origin: 'http://127.0.0.1:5173',
+    methods: ["GET", "POST"]
+  }
+}
 // Middleware
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(headers));
 
 // Rutas
 const authRoutes = require('./routes/authRoutes');
